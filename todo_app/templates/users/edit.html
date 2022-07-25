@@ -1,0 +1,40 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-sm-3">
+                <form action="" method="post" class="card img-rounded border-info">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="text-center">Edit scheduled task</h4><hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% include 'users/messages.html' %}
+                            {{edit_form|crispy}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary btn-sm btn-block">Edit Task</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

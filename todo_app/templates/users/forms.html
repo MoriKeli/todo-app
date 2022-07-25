@@ -1,0 +1,20 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+<link rel="shortcut icon" href="{% static 'check.svg' %}" type="image/x-icon">
+
+<nav class="navbar fixed-top">
+    <div class="navbar-header">
+        <a href="{% url 'login' %}" class="navbar-brand"><img src="{% static 'check.svg' %}" alt="icon"> TODO</a>
+        <button type="button" class="navbar-toggler navbar-right" data-toggle="collapse" data-target="#sec-navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+<div id="footer" class="fixed-bottom text-center">
+    <footer>&copy; 2022 TODO WEBAPP | ALL RIGHTS RESERVED.</footer>
+</div>

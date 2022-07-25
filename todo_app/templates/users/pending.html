@@ -1,0 +1,53 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-sm-1">
+                <div class="card card-body img-rounded">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="text-center">Pending tasks</h4><hr>
+                            <h6 class="form-text text-muted">NB: Click the links for more details</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-md table-bordered table-responsive-md">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Task</th>
+                                        <th>Scheduled</th>
+                                        <th>Due date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for task in tasks %}
+                                    <tr>
+                                        <td><a href="{% url 'task_complete' task.id %}">{{task.task}}</a></td>
+                                        <td>{{task.created}}</td>
+                                        <td>{{task.date_due}}</td>
+                                        <td><b>Pending</b></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

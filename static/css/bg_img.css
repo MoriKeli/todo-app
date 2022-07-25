@@ -1,0 +1,13 @@
+body {
+    background-image: url(wallpaper1.jpg);
+    background-size: cover;
+
+}
+
+/* image responsiveness */
+@media only screen and (max-width: 480px) {
+    body {
+        background-image: url(wallpaper1.jpg);
+        background-size: auto;
+    }   
+}

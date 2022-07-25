@@ -1,0 +1,74 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-body img-rounded border-primary">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            {% if user.profile.gender != "" and user.profile.country != "" %}
+                            &lAarr; 
+                            <a href="{% url 'homepage' %}">
+                                <img class="mt-n2" style="height: 25px; width: 25px" src="{% static 'home.png' %}" alt="icon"> Homepage</a>{% endif %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% if user.profile.gender == "" and user.profile.country == "" %}
+                                <h4 class="text-center form-text text-muted">Fill-in your <b>"gender"</b>, <b>"country of origin"</b> and <b>"Phone No."</b> using the form below.</h4>
+                            {% endif %}
+                            <h3 class="text-center">{{user.username}}'s profile</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <img id="profile-dp" class="rounded-circle" src="{{user.profile.profile_pic.url}}" alt="">
+                            <h4>{{user.username}}</h4>
+                            <h5>{{user.profile.gender|default:"Gender: --"}} | {{user.profile.country|default:"Country: --"}}</h5><br><hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="" method="post" enctype="multipart/form-data" class="card card-body border-info">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 class="text-center">Edit profile form</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {% include 'users/messages.html' %}
+                                        {{profile_form|crispy}}
+                                        {% if user.profile.gender == "" and user.profile.country == "" %}
+                                        {{add_info_form|crispy}}
+                                        {% endif %}
+                                        {{dp_form|crispy}}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button id="button-link" type="submit" class="btn btn-primary">Edit Profile</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

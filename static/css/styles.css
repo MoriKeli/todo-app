@@ -1,0 +1,80 @@
+* {box-sizing: border-box;}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    background-color: blueviolet;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.7);
+    /* width: 100%; */
+}
+.navbar > .navbar-header > .navbar-brand img {
+    margin-top: -10%;
+    height: 30px;
+    width: 30px;
+}
+.navbar > .navbar-header > .navbar-brand {
+    color: white;
+    font: 600 25px 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.navbar > .navbar-header > .navbar-toggler > .navbar-toggler-icon {
+    color: white;
+}
+.navbar > .navbar-nav > .nav-item > .navbar-link {
+    color: white;
+}
+.navbar > .navbar-nav > .nav-item > .navbar-link:hover {
+    color: white;
+    text-decoration: none;
+}
+.navbar > .navbar-nav > .nav-item > .navbar-link > img {
+    height: 30px;
+    width: 30px;
+}
+
+.container {
+    margin-top: 7%;
+    margin-bottom: 8%;
+}
+.card {
+    margin-bottom: 2%;
+    padding: 10px;
+}
+hr {
+    margin-top: -1.2%;
+    height: 0.2%;
+    background-color: black;
+}
+#task-links {
+    margin-top: -4%;
+}
+#button-link {
+    width: 100%;
+    margin: 2px 0;
+}
+#profile-dp {
+    height: 150px;
+    width: 150px;
+    border: 1px solid black;
+}
+#footer {
+    background-color: rgb(97, 95, 95);
+    padding: 7px;
+
+}
+footer {
+    color: white;
+    font: 600 13px Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* mobile responsive */
+@media only screen and (max-width: 480px) {
+    .container {
+        margin-top: 25%;
+        margin-bottom: 16%;
+    }
+    .navbar > .navbar-nav > .nav-item > .navbar-link {
+        display: none;
+    }
+}

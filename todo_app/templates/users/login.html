@@ -1,0 +1,46 @@
+{% extends 'users/forms.html' %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-sm-3">
+                <form action="" method="post" class="card card-body img-rounded border-primary">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="text-center">User Login</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% include 'users/messages.html' %}
+                            {{form|crispy}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button id="button-link" type="submit" class="btn btn-primary">Login</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6 class="text-right mt-2"><a href="">Forgot password?</a></h6>
+                            <hr class="mt-2" style="height: 0.1%;"><h6 class="text-center">Don't have an account? <a href="{% url 'signup' %}">Create account</a></h6>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

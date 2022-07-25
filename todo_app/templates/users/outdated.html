@@ -1,0 +1,53 @@
+{% extends 'users/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-body rounded">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 class="text-center">Outdated tasks</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-sm table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Task</th>
+                                        <th>Scheduled</th>
+                                        <th>Due date</th>
+                                        <th>Current date</th>
+                                        <th>Task status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for task in outdatedTasks %}
+                                    <tr>
+                                        <td><a href="{% url 'task_complete' task.id %}">{{task.task}}</a></td>
+                                        <td>{{task.created}}</td>
+                                        <td>{{task.date_due}}</td>
+                                        <td>{% now "D, d\t\h M Y " %}</td>
+                                        <td><b>Outdated</b></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-sm-2">
+                <div class="card card-body rounded">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="text-center mb-3">Have you completed the task below?</h5><hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea cols="30" rows="3" class="form-control" disabled>{{obj.task}}</textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {{form|crispy}}
+                                        <p class="form-text text-muted"><b>NB: If yes, check the box above, else </b><a href="{% url 'edit_task' obj.id %}">postpone scheduled task</a></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary btn-block btn-sm">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

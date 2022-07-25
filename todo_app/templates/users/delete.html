@@ -1,0 +1,36 @@
+{% extends 'users/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-sm-3">
+                <form action="" method="post" class="card card-body img-rounded text-center">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            Are you sure you want to delete <b>"{{delete.task}}</b>"?
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="{% url 'homepage' %}" class="btn btn-warning btn-sm btn-block">Cancel</a>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-danger btn-sm btn-block">Delete</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
